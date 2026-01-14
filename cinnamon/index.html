@@ -33,7 +33,7 @@
         </div>
         <div class="content">
             <p>Enter Batch ID to Trace</p>
-            <input type="text" id="bid" placeholder="e.g. CM-101">
+            <input type="text" id="bid" placeholder="Enter batch number here">
             <div class="error" id="err">Batch not found.</div>
             <button onclick="search()">TRACE ORIGIN</button>
         </div>
@@ -64,7 +64,7 @@
     </div>
 </div>
 <script>
-    const BATCH_DB = [{"id": "CM-101", "farmer": "Nimal", "date": "1/10/2026", "photo": "https://drive.google.com/uc?export=view&id=1BnPsi2glggDDmcte5ZtVjQ91WkW9WuvC", "map": "https://maps.app.goo.gl/6XsD6DdGYsnX1ZP88", "report": "https://drive.google.com/file/d/14vYVJUxvETSaY65pb6BCP5xNEhPKII-p/view?usp=drive_link"}, {"id": "Cm-102", "farmer": "Amal", "date": "2/13/2026", "photo": "https://drive.google.com/uc?export=view&id=1YXudrNJF7lYXORRcBysOmSgEmgYwmFPv", "map": "https://maps.app.goo.gl/6XsD6DdGYsnX1ZP88", "report": "https://drive.google.com/file/d/1Ls5gYTpCTT58NHYu4GH_V6krPAFfO6hB/view?usp=drive_link"}, {"id": "CM-103", "farmer": "Samal", "date": "10/10/2025", "photo": "https://drive.google.com/uc?export=view&id=1YK5xg6MV7175uO3ZvRMMJAP3rKQtjHAZ", "map": "5uh5y5", "report": "https://drive.google.com/open?id=1ScLPvjra5IptXVz2zoi6Kw-toHLvJayH"}, {"id": "CM-104", "farmer": "Ramiru", "date": "12/12/2025", "photo": "https://drive.google.com/uc?export=view&id=17E9Zo0R3WOQMNmOD_X0uZt3D_fIzRqkR", "map": "cece", "report": "https://drive.google.com/open?id=1gUms2yPp0ZWk_C1V1GOA81Sbkb-jv9_X"}];
+    const BATCH_DB = [{"id": "CM-101", "farmer": "Nimal", "date": "1/10/2026", "photo": "https://lh3.googleusercontent.com/d/1BnPsi2glggDDmcte5ZtVjQ91WkW9WuvC", "map": "https://maps.app.goo.gl/6XsD6DdGYsnX1ZP88", "report": "https://drive.google.com/file/d/14vYVJUxvETSaY65pb6BCP5xNEhPKII-p/view?usp=drive_link"}, {"id": "Cm-102", "farmer": "Amal", "date": "2/13/2026", "photo": "https://lh3.googleusercontent.com/d/1YXudrNJF7lYXORRcBysOmSgEmgYwmFPv", "map": "https://maps.app.goo.gl/6XsD6DdGYsnX1ZP88", "report": "https://drive.google.com/file/d/1Ls5gYTpCTT58NHYu4GH_V6krPAFfO6hB/view?usp=drive_link"}, {"id": "CM-103", "farmer": "Samal", "date": "10/10/2025", "photo": "https://lh3.googleusercontent.com/d/1YK5xg6MV7175uO3ZvRMMJAP3rKQtjHAZ", "map": "5uh5y5", "report": "https://drive.google.com/open?id=1ScLPvjra5IptXVz2zoi6Kw-toHLvJayH"}, {"id": "CM-104", "farmer": "Ramiru", "date": "12/12/2025", "photo": "https://lh3.googleusercontent.com/d/17E9Zo0R3WOQMNmOD_X0uZt3D_fIzRqkR", "map": "cece", "report": "https://drive.google.com/open?id=1gUms2yPp0ZWk_C1V1GOA81Sbkb-jv9_X"}];
     function search() {
         const inputField = document.getElementById('bid');
         const errorMsg = document.getElementById('err');
