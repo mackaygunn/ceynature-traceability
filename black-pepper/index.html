@@ -29,35 +29,36 @@
 
         /* --- MODERN GLASS NAV --- */
         .top-nav {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 20px 25px 30px 25px;
-            border-bottom-left-radius: 32px;
-            border-bottom-right-radius: 32px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.04);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 25px 25px 30px 25px;
+            border-bottom-left-radius: 35px;
+            border-bottom-right-radius: 35px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
             z-index: 100;
             text-align: center;
             position: sticky; top: 0;
         }
         
-        /* LOGO SIZE INCREASED HERE */
-        .logo-img { max-height: 90px; width: auto; display: block; margin: 0 auto 20px auto; }
+        /* LOGO MAXIMIZED */
+        .logo-img { max-height: 120px; width: auto; display: block; margin: 0 auto 15px auto; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
         
-        .search-box { position: relative; margin-top: 15px; }
+        .logo { font-size: 32px; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: -1px; }
+
+        .search-box { position: relative; margin-top: 20px; }
         input { 
             width: 100%; padding: 18px 25px; 
-            border: none; border-radius: 20px; 
+            border: 2px solid transparent; border-radius: 20px; 
             font-family: 'Inter', sans-serif; font-size: 16px; 
             text-align: center; 
             background: #f3f4f6; color: #333;
-            transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
         }
         input:focus { 
-            background: white; 
-            outline: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transform: scale(1.02);
+            background: white; border-color: var(--primary);
+            outline: none; box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
         }
         .search-btn { 
             width: 100%; padding: 18px; margin-top: 15px; 
@@ -66,37 +67,34 @@
             font-size: 16px; font-weight: 700; cursor: pointer; 
             letter-spacing: 0.5px; 
             box-shadow: 0 10px 25px rgba(0,0,0,0.15); 
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.2s;
         }
-        .search-btn:active { transform: scale(0.96); box-shadow: 0 5px 10px rgba(0,0,0,0.1); }
+        .search-btn:active { transform: scale(0.97); }
 
         /* --- HERO & FACTS --- */
         .scroll-content { padding: 25px; flex-grow: 1; }
         
         .hero-container { 
             position: relative; margin: 0 -25px 30px -25px; 
-            height: 250px; overflow: hidden; 
-            border-radius: 0 0 40px 40px; 
-            margin-top: -30px; 
-            background: #ddd; /* Fallback color if image fails */
+            height: 260px; overflow: hidden; 
+            border-radius: 0 0 45px 45px; 
+            margin-top: -35px; 
         }
         .hero-img { width: 100%; height: 100%; object-fit: cover; transition: transform 2s ease; }
-        .hero-img:hover { transform: scale(1.05); }
         
         .section-title { 
-            font-size: 22px; font-weight: 800; color: #111; 
+            font-size: 24px; font-weight: 800; color: #111; 
             margin-bottom: 20px; display: flex; align-items: center; 
             letter-spacing: -0.5px;
         }
         
         .facts-grid { display: grid; gap: 15px; }
         .fact-card { 
-            background: white; padding: 20px; border-radius: 20px; 
+            background: white; padding: 20px; border-radius: 24px; 
             display: flex; align-items: flex-start; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.03);
             transition: transform 0.2s;
         }
-        .fact-card:hover { transform: translateY(-3px); }
         
         .check-icon { 
             width: 28px; height: 28px; background: var(--primary); color: white; 
@@ -105,10 +103,10 @@
             margin-top: 2px;
         }
         .fact-card p { margin: 0; font-size: 15px; line-height: 1.5; color: #555; }
-        .fact-card strong { color: #222; font-weight: 700; }
+        .fact-card strong { color: #111; font-weight: 700; }
 
         /* --- RESULTS SCREEN --- */
-        #result-screen { display: none; animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1); padding-bottom: 40px; }
+        #result-screen { display: none; animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1); padding-bottom: 40px; }
         
         .verified-badge { 
             background: #E8F5E9; color: #1B5E20; padding: 8px 20px; 
@@ -117,37 +115,36 @@
         }
 
         .farmer-card { 
-            background: white; border-radius: 30px; padding: 35px 25px; 
+            background: white; border-radius: 35px; padding: 40px 25px; 
             text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.06); 
-            border: none; margin-bottom: 25px;
-            position: relative; overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.02); margin-bottom: 25px;
         }
         
         .farmer-img { 
-            width: 140px; height: 140px; border-radius: 50%; 
-            object-fit: cover; border: 6px solid white; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 20px;
+            width: 150px; height: 150px; border-radius: 50%; 
+            object-fit: cover; border: 8px solid #fff; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12); margin-bottom: 20px;
         }
-        .farmer-name { font-size: 24px; font-weight: 800; color: #111; margin-bottom: 5px; letter-spacing: -0.5px; }
-        .farmer-label { color: var(--primary); font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; opacity: 0.8; }
+        .farmer-name { font-size: 26px; font-weight: 800; color: #111; margin-bottom: 5px; letter-spacing: -0.5px; }
+        .farmer-label { color: var(--primary); font-size: 14px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; opacity: 0.9; }
 
-        .data-grid { margin-top: 25px; background: #f9f9f9; border-radius: 20px; padding: 20px; }
+        .data-grid { margin-top: 30px; background: #f8f9fa; border-radius: 25px; padding: 25px; }
         .data-row { 
             display: flex; justify-content: space-between; 
             padding: 12px 0; border-bottom: 1px solid #eee; 
             font-size: 15px;
         }
         .data-row:last-child { border-bottom: none; }
-        .data-label { color: #777; font-weight: 500; }
-        .data-val { font-weight: 700; color: #111; }
+        .data-label { color: #777; font-weight: 600; }
+        .data-val { font-weight: 800; color: #111; }
 
         .action-btn { 
-            display: block; width: 100%; padding: 18px; 
-            margin-bottom: 15px; border-radius: 20px; 
+            display: block; width: 100%; padding: 20px; 
+            margin-bottom: 15px; border-radius: 22px; 
             text-decoration: none; font-weight: 700; text-align: center; 
             font-size: 15px; transition: 0.2s; box-sizing: border-box;
         }
-        .btn-map { background: white; color: #333; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .btn-map { background: white; color: #333; box-shadow: 0 10px 30px rgba(0,0,0,0.06); }
         .btn-report { background: var(--primary); color: white; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
 
         .error-msg { 
@@ -156,9 +153,9 @@
             text-align: center; display: none; margin-top: 15px;
         }
 
-        .footer { text-align: center; color: #bbb; font-size: 12px; margin-top: 40px; padding-bottom: 20px; font-weight: 500; }
+        .footer { text-align: center; color: #bbb; font-size: 12px; margin-top: 50px; padding-bottom: 30px; font-weight: 500; }
 
-        @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: translateY(0); } }
         .hidden { display: none !important; }
     </style>
 </head>
@@ -179,8 +176,8 @@
         
         <div id="intro-area">
             
-    <div class="hero-container">
-        <img src="https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=800&q=80" class="hero-img" alt="Ceylon Black Pepper" onerror="this.style.display='none';">
+    <div class="hero-container" style="background: linear-gradient(135deg, #2c3e50, #000000);">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Black_Peppercorns.jpg/1280px-Black_Peppercorns.jpg" class="hero-img" alt="Ceylon Black Pepper" onerror="this.style.opacity='0';">
         <div class="hero-overlay"></div>
     </div>
     
