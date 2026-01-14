@@ -6,7 +6,7 @@
     <title>Ceylon Clove | Ceynature Traceability</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #4B2C20; --accent: #A0522D; --bg-color: #FFF9F5; }
+        :root { --primary: #4B2C20; --accent: {{THEME_ACCENT}}; --bg-color: {{THEME_BG}}; }
         * { box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: #f0f2f5; margin: 0; display: flex; justify-content: center; }
         #app-container { width: 100%; max-width: 450px; background: var(--bg-color); min-height: 100vh; position: relative; overflow-x: hidden; }
@@ -44,7 +44,7 @@
 <body>
 <div id="app-container">
     <div class="top-nav">
-        <div>Ceynature</div>
+        {{HEADER_CONTENT}}
         <div class="search-box">
             <input type="text" id="bid" placeholder="Enter Batch ID (e.g. CM-01)">
             <button class="search-btn" onclick="search()">TRACE ORIGIN</button>
@@ -54,9 +54,9 @@
 
     <div class="scroll-content" style="padding: 20px;">
         <div id="intro-area">
-            <div class="hero-container" style="background:#FFF9F5;"><img src="clove photo.png" class="hero-img"></div>
+            <div class="hero-container"><img src="clove photo.png" class="hero-img"></div>
             <h2 style="font-weight: 800; margin-top: 25px; color: #333;">Why Ceylon Clove?</h2>
-            <div class="facts-grid"><div class="fact-card"><p>🌿 <strong>Pure Origin:</strong> Harvested from the central hills.</p></div><div class="fact-card"><p>🦷 <strong>Natural Care:</strong> Rich in eugenol for health.</p></div><div class="fact-card"><p>🥘 <strong>Aroma:</strong> Intense, woodsy flavor profile.</p></div><div class="fact-card"><p>🛡️ <strong>Antioxidant:</strong> High protective power.</p></div></div>
+            <ul><li>🌿 Harvested from the lush central highlands of Sri Lanka</li><li>🦷 Highest natural concentration of Eugenol for dental health</li><li>🛡️ Nature's most potent antioxidant spice</li><li>🏺 Traditionally sun-dried to preserve essential oils.</li></ul>
             <div style="text-align: center; color: #bbb; font-size: 12px; margin-top: 40px; padding-bottom: 20px;">
                 &copy; 2026 Ceynature Exporters.
             </div>
@@ -86,7 +86,7 @@
 </div>
 
 <script>
-    const BATCH_DB = [{"id": "CO-101", "farmer": "Ajith", "date": "11/23/2026", "photo": "https://drive.google.com/uc?export=view&id=1S-gibHNWgzmddHUlzkKB5YpTxjIgw4WP", "map": "vvdcxsx", "report": "https://drive.google.com/open?id=1uH7fBW-zwuWw2TO1sP_IedR4w-oGxFFy"}, {"id": "CL-101", "farmer": "Asha", "date": "1/1/2026", "photo": "https://drive.google.com/uc?export=view&id=1-piEDdso5krjJsfN1cxmgN2ZwP7eScsx", "map": "Geiwnedu 3dun3in8", "report": "https://drive.google.com/open?id=15ALNoPj68tI-Z8p-oERFw-YT6kW-hUuy"}];
+    const BATCH_DB = [[{"id": "CO-101", "farmer": "Ajith", "date": "11/23/2026", "photo": "https://drive.google.com/uc?export=view&id=1S-gibHNWgzmddHUlzkKB5YpTxjIgw4WP", "map": "vvdcxsx", "report": "https://drive.google.com/open?id=1uH7fBW-zwuWw2TO1sP_IedR4w-oGxFFy"}, {"id": "CL-101", "farmer": "Asha", "date": "1/1/2026", "photo": "https://drive.google.com/uc?export=view&id=1-piEDdso5krjJsfN1cxmgN2ZwP7eScsx", "map": "Geiwnedu 3dun3in8", "report": "https://drive.google.com/open?id=15ALNoPj68tI-Z8p-oERFw-YT6kW-hUuy"}]];
 
     function search() {
         const input = document.getElementById('bid').value.trim().toLowerCase();
