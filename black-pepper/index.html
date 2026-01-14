@@ -33,7 +33,7 @@
         </div>
         <div class="content">
             <p>Enter Batch ID to Trace</p>
-            <input type="text" id="bid" placeholder="e.g. BP-101">
+            <input type="text" id="bid" placeholder="Enter batch number here">
             <div class="error" id="err">Batch not found.</div>
             <button onclick="search()">TRACE ORIGIN</button>
         </div>
@@ -64,7 +64,7 @@
     </div>
 </div>
 <script>
-    const BATCH_DB = [{"id": "BP-101", "farmer": "Kamal", "date": "1/10/2026", "photo": "https://drive.google.com/uc?export=view&id=1odGavB8CWaLbKBKl2QBS7hTY30YkrGPw", "map": "https://maps.app.goo.gl/6XsD6DdGYsnX1ZP88", "report": "https://drive.google.com/file/d/1ihdOqbyt9xnjtRc6go1rdBdA4r3z6xxH/view?usp=drive_link"}, {"id": "BP-102", "farmer": "Saman", "date": "2/10/2026", "photo": "https://drive.google.com/uc?export=view&id=1-zuvISU2M87qLOlKxj0dt2Gaz45bIQ8-", "map": "https://maps.app.goo.gl/6XsD6DdGYsnX1ZP88", "report": "https://drive.google.com/file/d/16BaYSELLRBCiQCdqOmnr6M6KD5W3ps6V/view?usp=drive_link"}];
+    const BATCH_DB = [{"id": "BP-101", "farmer": "Kamal", "date": "1/10/2026", "photo": "https://lh3.googleusercontent.com/d/1odGavB8CWaLbKBKl2QBS7hTY30YkrGPw", "map": "https://maps.app.goo.gl/6XsD6DdGYsnX1ZP88", "report": "https://drive.google.com/file/d/1ihdOqbyt9xnjtRc6go1rdBdA4r3z6xxH/view?usp=drive_link"}, {"id": "BP-102", "farmer": "Saman", "date": "2/10/2026", "photo": "https://lh3.googleusercontent.com/d/1-zuvISU2M87qLOlKxj0dt2Gaz45bIQ8-", "map": "https://maps.app.goo.gl/6XsD6DdGYsnX1ZP88", "report": "https://drive.google.com/file/d/16BaYSELLRBCiQCdqOmnr6M6KD5W3ps6V/view?usp=drive_link"}];
     function search() {
         const inputField = document.getElementById('bid');
         const errorMsg = document.getElementById('err');
