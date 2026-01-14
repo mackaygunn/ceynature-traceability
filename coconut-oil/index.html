@@ -33,7 +33,7 @@
         </div>
         <div class="content">
             <p>Enter Batch ID to Trace</p>
-            <input type="text" id="bid" placeholder="e.g. CO-101">
+            <input type="text" id="bid" placeholder="Enter batch number here">
             <div class="error" id="err">Batch not found.</div>
             <button onclick="search()">TRACE ORIGIN</button>
         </div>
@@ -64,7 +64,7 @@
     </div>
 </div>
 <script>
-    const BATCH_DB = [{"id": "CO-101", "farmer": "Ajith", "date": "11/23/2026", "photo": "https://drive.google.com/uc?export=view&id=1S-gibHNWgzmddHUlzkKB5YpTxjIgw4WP", "map": "vvdcxsx", "report": "https://drive.google.com/open?id=1uH7fBW-zwuWw2TO1sP_IedR4w-oGxFFy"}];
+    const BATCH_DB = [{"id": "CO-101", "farmer": "Ajith", "date": "11/23/2026", "photo": "https://lh3.googleusercontent.com/d/1S-gibHNWgzmddHUlzkKB5YpTxjIgw4WP", "map": "vvdcxsx", "report": "https://drive.google.com/open?id=1uH7fBW-zwuWw2TO1sP_IedR4w-oGxFFy"}];
     function search() {
         const inputField = document.getElementById('bid');
         const errorMsg = document.getElementById('err');
