@@ -163,7 +163,7 @@
         <div id="intro-area">
             
     <div class="hero-container" style="background: linear-gradient(135deg, #2c3e50, #000000);">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Black_Peppercorns.jpg/1280px-Black_Peppercorns.jpg" class="hero-img" alt="Ceylon Black Pepper" onerror="this.style.opacity='0';">
+        <img src="https://images.pexels.com/photos/6720166/pexels-photo-6720166.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="hero-img" alt="Ceylon Black Pepper" onerror="this.style.display='none';">
     </div>
     
             
@@ -209,7 +209,9 @@
 </div>
 
 <script>
-    // This is where Python injects your Google Sheet data
+    // ⬇️ THIS IS THE MAGIC FIX ⬇️
+    // We write "[]" here so VS Code thinks it's a valid empty list.
+    // Python will look for this EXACT line and replace it with real data.
     const BATCH_DB = [{"id": "BP-101", "farmer": "Kamal", "date": "1/10/2026", "photo": "https://drive.google.com/thumbnail?id=1odGavB8CWaLbKBKl2QBS7hTY30YkrGPw&sz=w300", "map": "https://maps.app.goo.gl/6XsD6DdGYsnX1ZP88", "report": "https://drive.google.com/file/d/1ihdOqbyt9xnjtRc6go1rdBdA4r3z6xxH/view?usp=drive_link"}, {"id": "BP-102", "farmer": "Saman", "date": "2/10/2026", "photo": "https://drive.google.com/thumbnail?id=1-zuvISU2M87qLOlKxj0dt2Gaz45bIQ8-&sz=w300", "map": "https://maps.app.goo.gl/6XsD6DdGYsnX1ZP88", "report": "https://drive.google.com/file/d/16BaYSELLRBCiQCdqOmnr6M6KD5W3ps6V/view?usp=drive_link"}];
 
     const inputField = document.getElementById('bid');
@@ -221,6 +223,13 @@
         let query = inputField.value.trim().toLowerCase();
         if (!query) { inputField.focus(); return; }
         
+        // Safety check if database is empty or not loaded
+        if (!BATCH_DB || BATCH_DB.length === 0) {
+            console.warn("Database is empty or failed to inject.");
+            errorMsg.style.display = 'block';
+            return;
+        }
+
         let result = BATCH_DB.find(b => b.id.toLowerCase().trim() === query);
         
         if(result) {
