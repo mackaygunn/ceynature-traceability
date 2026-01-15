@@ -36,47 +36,70 @@
             <div class="error-msg" id="err">Batch ID not found. Please try again.</div>
         </div>
     </div>
-    <div class="scroll-content" style="padding: 20px;">
-        <div id="intro-area">
-            <div class="hero-container"><img src="pepper photo.jpg" class="hero-img"></div>
-            <h2 style="font-weight: 800; margin-top: 25px; color: #333;">Why Ceylon Black Pepper?</h2>
-            <ul><li>🔥 High Piperine content for superior heat and aroma</li><li>🥘 Known as 'Black Gold' for its intense flavor profile</li><li>🌿 100% sustainably sourced from small-holder forest gardens</li><li>🇱🇰 Authentic Sri Lankan origin with no synthetic additives.</li></ul>
-        </div>
-        <div id="result-screen">
-            <div class="farmer-card">
-                <h2 id="d_farm" class="farmer-name"></h2>
-                <img id="d_img" class="farmer-img" src="" onerror="this.src='https://placehold.co/400x400?text=No+Photo'">
-                <div class="data-grid">
-                    <div class="data-row"><span>Batch ID</span><span id="d_id" style="font-weight:800; color:var(--primary)"></span></div>
-                    <div class="data-row"><span>Harvest Date</span><span id="d_date" style="font-weight:600"></span></div>
-                </div>
+
+    <div id="intro-area" class="scroll-content" style="padding: 20px;">
+        <div class="hero-container"><img src="pepper photo.jpg" class="hero-img"></div>
+        <h2 style="font-weight: 800; margin-top: 25px; color: #333;">Why Ceylon Black Pepper?</h2>
+        <ul><li>🔥 High Piperine content for superior heat and aroma</li><li>🥘 Known as 'Black Gold' for its intense flavor profile</li><li>🌿 100% sustainably sourced from small-holder forest gardens</li><li>🇱🇰 Authentic Sri Lankan origin with no synthetic additives.</li></ul>
+    </div>
+
+    <div id="result-screen">
+        <div class="farmer-card">
+            <h2 id="d_farm" style="margin:0; color:#333;"></h2>
+            <img id="d_img" class="farmer-img" src="" onerror="this.src='https://placehold.co/400x400?text=No+Photo'">
+            <div class="data-grid">
+                <div class="data-row"><span>Batch ID</span><span id="d_id" style="font-weight:800; color:var(--primary)"></span></div>
+                <div class="data-row"><span>Harvest Date</span><span id="d_date" style="font-weight:600"></span></div>
             </div>
-            <a id="lnk_map" class="search-btn" style="display:block; text-align:center; text-decoration:none; margin-top:20px;" target="_blank">📍 View Farm Location</a>
-            <a id="lnk_rep" class="search-btn" style="display:block; text-align:center; text-decoration:none; margin-top:10px; background:#333;" target="_blank">📄 View Lab Report</a>
-            <p style="text-align:center; margin-top:30px; color:var(--primary); font-weight:700; cursor:pointer;" onclick="location.reload()">← START NEW SEARCH</p>
         </div>
+        <a id="lnk_map" class="search-btn" style="display:block; text-align:center; text-decoration:none; margin-top:20px;" target="_blank">📍 View Farm Location</a>
+        <a id="lnk_rep" class="search-btn" style="display:block; text-align:center; text-decoration:none; margin-top:10px; background:#333;" target="_blank">📄 View Lab Report</a>
+        <p style="text-align:center; margin-top:30px; color:var(--primary); font-weight:700; cursor:pointer;" onclick="location.reload()">← START NEW SEARCH</p>
     </div>
 </div>
+
 <script>
+    // Python will replace the comment below
     const BATCH_DB = [{"id": "BP-101", "farmer": "Kamal", "date": "1/10/2026", "photo": "https://drive.google.com/uc?export=view&id=1odGavB8CWaLbKBKl2QBS7hTY30YkrGPw", "map": "https://maps.app.goo.gl/6XsD6DdGYsnX1ZP88", "report": "https://drive.google.com/file/d/1ihdOqbyt9xnjtRc6go1rdBdA4r3z6xxH/view?usp=drive_link"}, {"id": "BP-102", "farmer": "Saman", "date": "2/10/2026", "photo": "https://drive.google.com/uc?export=view&id=1-zuvISU2M87qLOlKxj0dt2Gaz45bIQ8-", "map": "https://maps.app.goo.gl/6XsD6DdGYsnX1ZP88", "report": "https://drive.google.com/file/d/16BaYSELLRBCiQCdqOmnr6M6KD5W3ps6V/view?usp=drive_link"}] [];
+
     function search() {
-        const val = document.getElementById('bid').value.trim().toLowerCase();
+        const inputField = document.getElementById('bid');
+        const val = inputField.value.trim().toLowerCase();
         const err = document.getElementById('err');
+        
+        // 1. Safety check: Did the data actually load?
+        if (!BATCH_DB || BATCH_DB.length === 0) {
+            alert("Database is still loading from GitHub. Please refresh in 30 seconds.");
+            return;
+        }
+
+        // 2. Search for the batch
         const found = BATCH_DB.find(b => b.id.toString().toLowerCase() === val);
+
         if(found) {
             err.style.display = 'none';
+            // Hide intro, show results
             document.getElementById('intro-area').classList.add('hidden');
             document.getElementById('result-screen').style.display = 'block';
+            
+            // Populate data
             document.getElementById('d_id').innerText = found.id;
             document.getElementById('d_farm').innerText = found.farmer;
             document.getElementById('d_date').innerText = found.date;
             document.getElementById('d_img').src = found.photo;
+            
+            // Handle links
             const m = document.getElementById('lnk_map');
-            if(found.map) { m.href = found.map; m.style.display = 'block'; } else m.style.display = 'none';
+            if(found.map && found.map !== "") { m.href = found.map; m.style.display = 'block'; } else { m.style.display = 'none'; }
+            
             const r = document.getElementById('lnk_rep');
-            if(found.report) { r.href = found.report; r.style.display = 'block'; } else r.style.display = 'none';
+            if(found.report && found.report !== "") { r.href = found.report; r.style.display = 'block'; } else { r.style.display = 'none'; }
+            
             window.scrollTo({top: 0, behavior: 'smooth'});
-        } else { err.style.display = 'block'; }
+        } else {
+            // Show error message
+            err.style.display = 'block';
+        }
     }
 </script>
 </body>
