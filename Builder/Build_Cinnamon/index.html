@@ -6,110 +6,90 @@
     <title>Ceylon Cinnamon | Ceynature Traceability</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #4E342E; --accent: {{THEME_ACCENT}}; --bg-color: {{THEME_BG}}; }
+        :root { --primary: #4E342E; }
         * { box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: #f0f2f5; margin: 0; display: flex; justify-content: center; }
-        #app-container { width: 100%; max-width: 450px; background: var(--bg-color); min-height: 100vh; position: relative; overflow-x: hidden; }
+        #app-container { width: 100%; max-width: 450px; background: white; min-height: 100vh; position: relative; }
         
-        .top-nav { background: white; padding: 25px; text-align: center; border-bottom-left-radius: 35px; border-bottom-right-radius: 35px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .top-nav { background: white; padding: 25px; text-align: center; border-bottom: 1px solid #eee; }
         .logo-img { max-height: 80px; margin-bottom: 10px; }
-        input { width: 100%; padding: 18px; border-radius: 20px; border: 2px solid #eee; text-align: center; font-size: 16px; margin-top: 15px; outline: none; transition: border-color 0.3s; }
+        
+        input { width: 100%; padding: 18px; border-radius: 20px; border: 2px solid #eee; text-align: center; font-size: 16px; margin-top: 15px; outline: none; }
         input:focus { border-color: var(--primary); }
         
-        .search-btn { width: 100%; padding: 18px; margin-top: 10px; background: var(--primary); color: white; border: none; border-radius: 20px; font-weight: 700; cursor: pointer; font-size: 16px; transition: transform 0.2s; }
-        .search-btn:active { transform: scale(0.98); }
+        .search-btn { width: 100%; padding: 18px; margin-top: 10px; background: var(--primary); color: white; border: none; border-radius: 20px; font-weight: 700; cursor: pointer; font-size: 16px; }
         
-        .hero-container { border-radius: 25px; overflow: hidden; margin-top: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .hero-container { border-radius: 25px; overflow: hidden; margin: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         .hero-img { width: 100%; height: 220px; object-fit: cover; display: block; }
 
-        #result-screen { display: none; padding: 20px; animation: fadeIn 0.5s ease-out; }
-        .farmer-card { background: white; border-radius: 30px; padding: 25px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
-        
-        /* New Styling for Farmer Name Header */
-        .farmer-header { margin-bottom: 20px; border-bottom: 2px solid #f8f9fa; padding-bottom: 15px; }
-        .farmer-label { font-size: 14px; color: #888; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 5px; }
-        .farmer-name { font-size: 24px; font-weight: 800; color: #333; margin: 0; }
-
+        #result-screen { display: none; padding: 20px; }
+        .farmer-card { background: white; border-radius: 30px; padding: 25px; text-align: center; border: 1px solid #eee; }
         .farmer-img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 6px solid #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.1); margin-bottom: 20px; }
         
         .data-grid { background: #f8f9fa; border-radius: 20px; padding: 15px; margin-top: 10px; }
         .data-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #eee; font-size: 14px; }
-        .data-row:last-child { border-bottom: none; }
         
         .error-msg { background: #ffebee; color: #c62828; padding: 15px; border-radius: 15px; display: none; margin-top: 10px; text-align: center; font-weight: 600; }
         .hidden { display: none !important; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 <div id="app-container">
     <div class="top-nav">
-        <img src="ceynature logo.jpg" class="logo-img" style="max-height: 70px;">
+        <img src="ceynature logo.jpg" class="logo-img">
         <div class="search-box">
             <input type="text" id="bid" placeholder="Enter Batch ID (e.g. CM-01)">
             <button class="search-btn" onclick="search()">TRACE ORIGIN</button>
-            <div class="error-msg" id="err">Batch ID not found. Please try again.</div>
+            <div class="error-msg" id="err">Batch ID not found.</div>
         </div>
     </div>
 
-    <div class="scroll-content" style="padding: 20px;">
-        <div id="intro-area">
-            <div class="hero-container"><img src="cinnamon photo.jpg" class="hero-img"></div>
-            <h2 style="font-weight: 800; margin-top: 25px; color: #333;">Why Ceylon Cinnamon?</h2>
+    <div id="intro-area">
+        <div class="hero-container"><img src="cinnamon photo.jpg" class="hero-img"></div>
+        <div style="padding: 20px;">
+            <h2 style="font-weight: 800;">Why Ceylon Cinnamon?</h2>
             <ul><li>🌿 The world’s only 'True Cinnamon' (Zeylanicum)</li><li>🍯 Ultra-low Coumarin levels for safe daily consumption</li><li>✨ Expertly hand-peeled into fine Alba grade quills</li><li>🧠 Scientifically linked to healthy blood sugar regulation.</li></ul>
-            <div style="text-align: center; color: #bbb; font-size: 12px; margin-top: 40px; padding-bottom: 20px;">
-                &copy; 2026 Ceynature Exporters.
-            </div>
         </div>
+    </div>
 
-        <div id="result-screen">
-            <div class="farmer-card">
-                <div class="farmer-header">
-                    <span class="farmer-label">Farmer's Name</span>
-                    <h2 id="d_farm" class="farmer-name"></h2>
-                </div>
-                
-                <img id="d_img" class="farmer-img" src="" onerror="this.src='https://placehold.co/400x400?text=No+Photo'">
-                
-                <div class="data-grid">
-                    <div class="data-row"><span>Batch ID</span><span id="d_id" style="font-weight:800; color:var(--primary)"></span></div>
-                    <div class="data-row"><span>Harvest Date</span><span id="d_date" style="font-weight:600"></span></div>
-                </div>
+    <div id="result-screen">
+        <div class="farmer-card">
+            <h2 id="d_farm" style="margin:0; color:#333;"></h2>
+            <img id="d_img" class="farmer-img" src="">
+            <div class="data-grid">
+                <div class="data-row"><span>Batch ID</span><span id="d_id" style="font-weight:800; color:var(--primary)"></span></div>
+                <div class="data-row"><span>Harvest Date</span><span id="d_date"></span></div>
             </div>
-            
-            <a id="lnk_map" class="search-btn" style="display:block; text-align:center; text-decoration:none; margin-top:20px;" target="_blank">📍 View Farm Location</a>
-            <a id="lnk_rep" class="search-btn" style="display:block; text-align:center; text-decoration:none; margin-top:10px; background:#333;" target="_blank">📄 View Lab Report</a>
-            
-            <p style="text-align:center; margin-top:30px; color:var(--primary); font-weight:700; cursor:pointer;" onclick="location.reload()">← START NEW SEARCH</p>
         </div>
+        <a id="lnk_map" class="search-btn" style="display:block; text-align:center; text-decoration:none; margin-top:20px;" target="_blank">📍 Farm Location</a>
+        <a id="lnk_rep" class="search-btn" style="display:block; text-align:center; text-decoration:none; margin-top:10px; background:#333;" target="_blank">📄 Lab Report</a>
+        <p style="text-align:center; margin-top:30px; color:var(--primary); font-weight:700; cursor:pointer;" onclick="location.reload()">← NEW SEARCH</p>
     </div>
 </div>
 
 <script>
-    const BATCH_DB = [[{"id": "CM-101", "farmer": "Nimal", "date": "1/10/2026", "photo": "https://drive.google.com/uc?export=view&id=1BnPsi2glggDDmcte5ZtVjQ91WkW9WuvC", "map": "https://maps.app.goo.gl/6XsD6DdGYsnX1ZP88", "report": "https://drive.google.com/file/d/14vYVJUxvETSaY65pb6BCP5xNEhPKII-p/view?usp=drive_link"}, {"id": "Cm-102", "farmer": "Amal", "date": "2/13/2026", "photo": "https://drive.google.com/uc?export=view&id=1YXudrNJF7lYXORRcBysOmSgEmgYwmFPv", "map": "https://maps.app.goo.gl/6XsD6DdGYsnX1ZP88", "report": "https://drive.google.com/file/d/1Ls5gYTpCTT58NHYu4GH_V6krPAFfO6hB/view?usp=drive_link"}, {"id": "CM-103", "farmer": "Samal", "date": "10/10/2025", "photo": "https://drive.google.com/uc?export=view&id=1YK5xg6MV7175uO3ZvRMMJAP3rKQtjHAZ", "map": "5uh5y5", "report": "https://drive.google.com/open?id=1ScLPvjra5IptXVz2zoi6Kw-toHLvJayH"}, {"id": "CM-104", "farmer": "Ramiru", "date": "12/12/2025", "photo": "https://drive.google.com/uc?export=view&id=17E9Zo0R3WOQMNmOD_X0uZt3D_fIzRqkR", "map": "cece", "report": "https://drive.google.com/open?id=1gUms2yPp0ZWk_C1V1GOA81Sbkb-jv9_X"}]];
+    // This looks like an error in your editor, but Python will fix it!
+    const BATCH_DB = [{"id": "CM-101", "farmer": "Nimal", "date": "1/10/2026", "photo": "https://drive.google.com/uc?export=view&id=1BnPsi2glggDDmcte5ZtVjQ91WkW9WuvC", "map": "https://maps.app.goo.gl/6XsD6DdGYsnX1ZP88", "report": "https://drive.google.com/file/d/14vYVJUxvETSaY65pb6BCP5xNEhPKII-p/view?usp=drive_link"}, {"id": "Cm-102", "farmer": "Amal", "date": "2/13/2026", "photo": "https://drive.google.com/uc?export=view&id=1YXudrNJF7lYXORRcBysOmSgEmgYwmFPv", "map": "https://maps.app.goo.gl/6XsD6DdGYsnX1ZP88", "report": "https://drive.google.com/file/d/1Ls5gYTpCTT58NHYu4GH_V6krPAFfO6hB/view?usp=drive_link"}, {"id": "CM-103", "farmer": "Samal", "date": "10/10/2025", "photo": "https://drive.google.com/uc?export=view&id=1YK5xg6MV7175uO3ZvRMMJAP3rKQtjHAZ", "map": "5uh5y5", "report": "https://drive.google.com/open?id=1ScLPvjra5IptXVz2zoi6Kw-toHLvJayH"}, {"id": "CM-104", "farmer": "Ramiru", "date": "12/12/2025", "photo": "https://drive.google.com/uc?export=view&id=17E9Zo0R3WOQMNmOD_X0uZt3D_fIzRqkR", "map": "cece", "report": "https://drive.google.com/open?id=1gUms2yPp0ZWk_C1V1GOA81Sbkb-jv9_X"}];
 
     function search() {
-        const input = document.getElementById('bid').value.trim().toLowerCase();
+        const val = document.getElementById('bid').value.trim().toLowerCase();
         const err = document.getElementById('err');
-        const result = BATCH_DB.find(b => b.id.toString().toLowerCase() === input);
         
-        if(result) {
+        // Find match
+        const found = BATCH_DB.find(b => b.id.toString().toLowerCase() === val);
+        
+        if(found) {
             err.style.display = 'none';
             document.getElementById('intro-area').classList.add('hidden');
             document.getElementById('result-screen').style.display = 'block';
             
-            document.getElementById('d_id').innerText = result.id;
-            document.getElementById('d_date').innerText = result.date;
-            document.getElementById('d_farm').innerText = result.farmer;
-            document.getElementById('d_img').src = result.photo;
+            document.getElementById('d_id').innerText = found.id;
+            document.getElementById('d_farm').innerText = found.farmer;
+            document.getElementById('d_date').innerText = found.date;
+            document.getElementById('d_img').src = found.photo;
             
-            const m = document.getElementById('lnk_map');
-            if(result.map) { m.href = result.map; m.style.display = 'block'; } else m.style.display = 'none';
-            
-            const r = document.getElementById('lnk_rep');
-            if(result.report) { r.href = result.report; r.style.display = 'block'; } else r.style.display = 'none';
-            
-            window.scrollTo({top: 0, behavior: 'smooth'});
+            document.getElementById('lnk_map').href = found.map || "#";
+            document.getElementById('lnk_rep').href = found.report || "#";
         } else {
             err.style.display = 'block';
         }
