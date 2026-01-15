@@ -58,17 +58,14 @@
     </div>
 </div>
 <script>
-    /* SAFETY SHIELD: Python replaces the comment AND the empty brackets. */
-    const BATCH_DB = [{"id": "CO-101", "farmer": "Ajith", "date": "11/23/2026", "photo": "https://drive.google.com/uc?export=view&id=1S-gibHNWgzmddHUlzkKB5YpTxjIgw4WP", "map": "vvdcxsx", "report": "https://drive.google.com/open?id=1uH7fBW-zwuWw2TO1sP_IedR4w-oGxFFy"}, {"id": "CL-101", "farmer": "Asha", "date": "1/1/2026", "photo": "https://drive.google.com/uc?export=view&id=1-piEDdso5krjJsfN1cxmgN2ZwP7eScsx", "map": "Geiwnedu 3dun3in8", "report": "https://drive.google.com/open?id=15ALNoPj68tI-Z8p-oERFw-YT6kW-hUuy"}];
+    const BATCH_DB = [{"id": "CO-101", "farmer": "Ajith", "date": "11/23/2026", "photo": "https://drive.google.com/thumbnail?id=1S-gibHNWgzmddHUlzkKB5YpTxjIgw4WP&sz=w1000", "map": "vvdcxsx", "report": "https://drive.google.com/open?id=1uH7fBW-zwuWw2TO1sP_IedR4w-oGxFFy"}, {"id": "CL-101", "farmer": "Asha", "date": "1/1/2026", "photo": "https://drive.google.com/thumbnail?id=1-piEDdso5krjJsfN1cxmgN2ZwP7eScsx&sz=w1000", "map": "Geiwnedu 3dun3in8", "report": "https://drive.google.com/open?id=15ALNoPj68tI-Z8p-oERFw-YT6kW-hUuy"}];
 
     function search() {
         const val = document.getElementById('bid').value.trim().toLowerCase();
         const err = document.getElementById('err');
-        
-        // Find the record
         const found = BATCH_DB.find(b => b.id.toString().toLowerCase() === val);
-        
         if(found) {
+            console.log("Found entry. Loading photo:", found.photo); // Debugging link
             err.style.display = 'none';
             document.getElementById('intro-area').classList.add('hidden');
             document.getElementById('result-screen').style.display = 'block';
@@ -76,17 +73,12 @@
             document.getElementById('d_farm').innerText = found.farmer;
             document.getElementById('d_date').innerText = found.date;
             document.getElementById('d_img').src = found.photo;
-            
             const m = document.getElementById('lnk_map');
             if(found.map) { m.href = found.map; m.style.display = 'block'; } else m.style.display = 'none';
-            
             const r = document.getElementById('lnk_rep');
             if(found.report) { r.href = found.report; r.style.display = 'block'; } else r.style.display = 'none';
-            
             window.scrollTo({top: 0, behavior: 'smooth'});
-        } else { 
-            err.style.display = 'block'; 
-        }
+        } else { err.style.display = 'block'; }
     }
 </script>
 </body>
