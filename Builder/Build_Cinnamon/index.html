@@ -31,7 +31,7 @@
     <div class="top-nav">
         <img src="ceynature logo.jpg" class="logo-img">
         <div class="search-box">
-            <input type="text" id="bid" placeholder="Enter Batch ID (e.g. CM-101)">
+            <input type="text" id="bid" placeholder="Enter Batch ID">
             <button class="search-btn" onclick="search()">TRACE ORIGIN</button>
             <div class="error-msg" id="err">Batch ID not found. Please try again.</div>
         </div>
@@ -58,14 +58,14 @@
     </div>
 </div>
 <script>
-    const BATCH_DB = [{"id": "CM-101", "farmer": "Nimal", "date": "1/10/2026", "photo": "https://drive.google.com/thumbnail?id=1BnPsi2glggDDmcte5ZtVjQ91WkW9WuvC&sz=w1000", "map": "https://maps.app.goo.gl/6XsD6DdGYsnX1ZP88", "report": "https://drive.google.com/file/d/14vYVJUxvETSaY65pb6BCP5xNEhPKII-p/view?usp=drive_link"}, {"id": "Cm-102", "farmer": "Amal", "date": "2/13/2026", "photo": "https://drive.google.com/thumbnail?id=1YXudrNJF7lYXORRcBysOmSgEmgYwmFPv&sz=w1000", "map": "https://maps.app.goo.gl/6XsD6DdGYsnX1ZP88", "report": "https://drive.google.com/file/d/1Ls5gYTpCTT58NHYu4GH_V6krPAFfO6hB/view?usp=drive_link"}, {"id": "CM-103", "farmer": "Samal", "date": "10/10/2025", "photo": "https://drive.google.com/thumbnail?id=1YK5xg6MV7175uO3ZvRMMJAP3rKQtjHAZ&sz=w1000", "map": "5uh5y5", "report": "https://drive.google.com/open?id=1ScLPvjra5IptXVz2zoi6Kw-toHLvJayH"}, {"id": "CM-104", "farmer": "Ramiru", "date": "12/12/2025", "photo": "https://drive.google.com/thumbnail?id=17E9Zo0R3WOQMNmOD_X0uZt3D_fIzRqkR&sz=w1000", "map": "cece", "report": "https://drive.google.com/open?id=1gUms2yPp0ZWk_C1V1GOA81Sbkb-jv9_X"}];
+    /* SAFETY SHIELD: Python replaces the comment AND the empty brackets. */
+    const BATCH_DB = [{"id": "CM-101", "farmer": "Nimal", "date": "1/10/2026", "photo": "https://lh3.googleusercontent.com/u/0/d/1BnPsi2glggDDmcte5ZtVjQ91WkW9WuvC", "map": "https://maps.app.goo.gl/6XsD6DdGYsnX1ZP88", "report": "https://drive.google.com/file/d/14vYVJUxvETSaY65pb6BCP5xNEhPKII-p/view?usp=drive_link"}, {"id": "Cm-102", "farmer": "Amal", "date": "2/13/2026", "photo": "https://lh3.googleusercontent.com/u/0/d/1YXudrNJF7lYXORRcBysOmSgEmgYwmFPv", "map": "https://maps.app.goo.gl/6XsD6DdGYsnX1ZP88", "report": "https://drive.google.com/file/d/1Ls5gYTpCTT58NHYu4GH_V6krPAFfO6hB/view?usp=drive_link"}, {"id": "CM-103", "farmer": "Samal", "date": "10/10/2025", "photo": "https://lh3.googleusercontent.com/u/0/d/1YK5xg6MV7175uO3ZvRMMJAP3rKQtjHAZ", "map": "5uh5y5", "report": "https://drive.google.com/open?id=1ScLPvjra5IptXVz2zoi6Kw-toHLvJayH"}, {"id": "CM-104", "farmer": "Ramiru", "date": "12/12/2025", "photo": "https://lh3.googleusercontent.com/u/0/d/17E9Zo0R3WOQMNmOD_X0uZt3D_fIzRqkR", "map": "cece", "report": "https://drive.google.com/open?id=1gUms2yPp0ZWk_C1V1GOA81Sbkb-jv9_X"}];
 
     function search() {
         const val = document.getElementById('bid').value.trim().toLowerCase();
         const err = document.getElementById('err');
         const found = BATCH_DB.find(b => b.id.toString().toLowerCase() === val);
         if(found) {
-            console.log("Found entry. Loading photo:", found.photo); // Debugging link
             err.style.display = 'none';
             document.getElementById('intro-area').classList.add('hidden');
             document.getElementById('result-screen').style.display = 'block';

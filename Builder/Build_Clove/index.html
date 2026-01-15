@@ -31,7 +31,7 @@
     <div class="top-nav">
         <img src="ceynature logo.jpg" class="logo-img">
         <div class="search-box">
-            <input type="text" id="bid" placeholder="Enter Batch ID (e.g. CM-101)">
+            <input type="text" id="bid" placeholder="Enter Batch ID">
             <button class="search-btn" onclick="search()">TRACE ORIGIN</button>
             <div class="error-msg" id="err">Batch ID not found. Please try again.</div>
         </div>
@@ -58,14 +58,14 @@
     </div>
 </div>
 <script>
-    const BATCH_DB = [{"id": "CO-101", "farmer": "Ajith", "date": "11/23/2026", "photo": "https://drive.google.com/thumbnail?id=1S-gibHNWgzmddHUlzkKB5YpTxjIgw4WP&sz=w1000", "map": "vvdcxsx", "report": "https://drive.google.com/open?id=1uH7fBW-zwuWw2TO1sP_IedR4w-oGxFFy"}, {"id": "CL-101", "farmer": "Asha", "date": "1/1/2026", "photo": "https://drive.google.com/thumbnail?id=1-piEDdso5krjJsfN1cxmgN2ZwP7eScsx&sz=w1000", "map": "Geiwnedu 3dun3in8", "report": "https://drive.google.com/open?id=15ALNoPj68tI-Z8p-oERFw-YT6kW-hUuy"}];
+    /* SAFETY SHIELD: Python replaces the comment AND the empty brackets. */
+    const BATCH_DB = [{"id": "CO-101", "farmer": "Ajith", "date": "11/23/2026", "photo": "https://lh3.googleusercontent.com/u/0/d/1S-gibHNWgzmddHUlzkKB5YpTxjIgw4WP", "map": "vvdcxsx", "report": "https://drive.google.com/open?id=1uH7fBW-zwuWw2TO1sP_IedR4w-oGxFFy"}, {"id": "CL-101", "farmer": "Asha", "date": "1/1/2026", "photo": "https://lh3.googleusercontent.com/u/0/d/1-piEDdso5krjJsfN1cxmgN2ZwP7eScsx", "map": "Geiwnedu 3dun3in8", "report": "https://drive.google.com/open?id=15ALNoPj68tI-Z8p-oERFw-YT6kW-hUuy"}];
 
     function search() {
         const val = document.getElementById('bid').value.trim().toLowerCase();
         const err = document.getElementById('err');
         const found = BATCH_DB.find(b => b.id.toString().toLowerCase() === val);
         if(found) {
-            console.log("Found entry. Loading photo:", found.photo); // Debugging link
             err.style.display = 'none';
             document.getElementById('intro-area').classList.add('hidden');
             document.getElementById('result-screen').style.display = 'block';

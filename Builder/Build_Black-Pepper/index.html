@@ -31,7 +31,7 @@
     <div class="top-nav">
         <img src="ceynature logo.jpg" class="logo-img">
         <div class="search-box">
-            <input type="text" id="bid" placeholder="Enter Batch ID (e.g. CM-101)">
+            <input type="text" id="bid" placeholder="Enter Batch ID">
             <button class="search-btn" onclick="search()">TRACE ORIGIN</button>
             <div class="error-msg" id="err">Batch ID not found. Please try again.</div>
         </div>
@@ -58,14 +58,14 @@
     </div>
 </div>
 <script>
-    const BATCH_DB = [{"id": "BP-101", "farmer": "Kamal", "date": "1/10/2026", "photo": "https://drive.google.com/thumbnail?id=1odGavB8CWaLbKBKl2QBS7hTY30YkrGPw&sz=w1000", "map": "https://maps.app.goo.gl/6XsD6DdGYsnX1ZP88", "report": "https://drive.google.com/file/d/1ihdOqbyt9xnjtRc6go1rdBdA4r3z6xxH/view?usp=drive_link"}, {"id": "BP-102", "farmer": "Saman", "date": "2/10/2026", "photo": "https://drive.google.com/thumbnail?id=1-zuvISU2M87qLOlKxj0dt2Gaz45bIQ8-&sz=w1000", "map": "https://maps.app.goo.gl/6XsD6DdGYsnX1ZP88", "report": "https://drive.google.com/file/d/16BaYSELLRBCiQCdqOmnr6M6KD5W3ps6V/view?usp=drive_link"}];
+    /* SAFETY SHIELD: Python replaces the comment AND the empty brackets. */
+    const BATCH_DB = [{"id": "BP-101", "farmer": "Kamal", "date": "1/10/2026", "photo": "https://lh3.googleusercontent.com/u/0/d/1odGavB8CWaLbKBKl2QBS7hTY30YkrGPw", "map": "https://maps.app.goo.gl/6XsD6DdGYsnX1ZP88", "report": "https://drive.google.com/file/d/1ihdOqbyt9xnjtRc6go1rdBdA4r3z6xxH/view?usp=drive_link"}, {"id": "BP-102", "farmer": "Saman", "date": "2/10/2026", "photo": "https://lh3.googleusercontent.com/u/0/d/1-zuvISU2M87qLOlKxj0dt2Gaz45bIQ8-", "map": "https://maps.app.goo.gl/6XsD6DdGYsnX1ZP88", "report": "https://drive.google.com/file/d/16BaYSELLRBCiQCdqOmnr6M6KD5W3ps6V/view?usp=drive_link"}];
 
     function search() {
         const val = document.getElementById('bid').value.trim().toLowerCase();
         const err = document.getElementById('err');
         const found = BATCH_DB.find(b => b.id.toString().toLowerCase() === val);
         if(found) {
-            console.log("Found entry. Loading photo:", found.photo); // Debugging link
             err.style.display = 'none';
             document.getElementById('intro-area').classList.add('hidden');
             document.getElementById('result-screen').style.display = 'block';
